@@ -1,4 +1,7 @@
-apply plugin: 'java'
+plugins {
+    id 'jacoco'
+    id 'java'
+}
 
 repositories {
     mavenCentral()
@@ -11,4 +14,12 @@ dependencies {
 
 test {
     outputs.upToDateWhen { false }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }
